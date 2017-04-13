@@ -1,0 +1,5 @@
+<div class="jumbotron">
+  <p>{{user}} at {{review.created_at | date:'short'}}</p>
+  <rating [ngModel]="review.rate" [readonly]="true"></rating>
+  <p>{{review.text}}</p>
+</div>

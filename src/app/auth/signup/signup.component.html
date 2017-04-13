@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-md-offset-3 vertical-center">
+      <div class="jumbotron">
+        <h3>Signup</h3>
+        <form role="form" (submit)="signup($event, username.value, password.value)">
+          <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input class="form-control" type="text" #username id="username" placeholder="Username" />
+          </div>
+          <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input class="form-control" type="password" #password id="password" placeholder="Password" />
+          </div>
+          <button type="submit" class="btn btn-success">Signup</button>
+          <a [routerLink]="['/signup']">Click here to Login</a>
+        </form>
+      </div>
+    </div>
+  </div>

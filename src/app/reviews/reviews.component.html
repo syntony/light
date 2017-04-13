@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Reviews</div>
+  <div class="panel-body">
+    <rating [(ngModel)]="starsCount"></rating>
+    <br/>
+    <form role="form" (submit)="sendReview(starsCount, yourReview.value)">
+      <input type="hidden" [(value)]="starsCount">
+      <label for="yourReview">Your review</label>
+      <textarea class="form-control" id="yourReview" #yourReview rows="3"></textarea>
+      <br/>
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+    <br/>
+    <app-review-item *ngFor="let review of reviews | orderByDate; let i = index" [review]="review" [reviewId]="i"></app-review-item>
+    </div>
+</div>
