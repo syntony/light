@@ -24,6 +24,10 @@ export class ReviewsComponent implements OnInit {
       error => console.log(<any>error));
   }
 
+  reload(){
+    location.reload();
+  }
+
   ngOnInit() {
     this.getReviews(this.productId);
   }
