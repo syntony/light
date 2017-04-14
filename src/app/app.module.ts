@@ -1,12 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, Http, RequestOptions } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { routing } from "./app.routing";
 import { LocalStorageModule } from 'angular-2-local-storage';
-
-import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
@@ -23,10 +20,6 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { AuthService } from "./auth/auth.service";
 import { OrderByDatePipe } from './common/order-by-date.pipe';
-
-export function authHttpServiceFactory(http: Http, options: RequestOptions) {
-  return new AuthHttp( new AuthConfig({}), http, options);
-}
 
 @NgModule({
   declarations: [
@@ -57,12 +50,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ProductService,
     ReviewService,
     AuthService,
-    AuthGuard,
-    {
-      provide: AuthHttp,
-      useFactory: authHttpServiceFactory,
-      deps: [Http, RequestOptions]
-    }
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

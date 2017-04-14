@@ -17,6 +17,7 @@ export class AuthService implements OnInit {
 
   login(username, password) {
     let body = JSON.stringify({ username, password });
+    localStorage.setItem('current_user', username);
     this.http.post( this.baseUrl+'login/', body, { headers: contentHeaders })
       .subscribe(
         response => {

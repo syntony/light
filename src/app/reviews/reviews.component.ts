@@ -14,18 +14,21 @@ export class ReviewsComponent implements OnInit {
 
   constructor(private reviewService: ReviewService) { }
 
-  sendReview(rate:number, text: any){
-    this.reviewService.sendReview(this.productId, rate, text );
-  }
-
   getReviews(id: number) {
     this.reviewService.getReviews(id).subscribe(
       reviews => this.reviews = reviews,
       error => console.log(<any>error));
   }
 
-  reload(){
-    location.reload();
+  sendReview(rate:number, text: any){
+    this.reviews.unshift({
+    'rate': rate,
+    'text': text,
+    'created_by': {'username': localStorage.getItem('current_user')},
+    'created_at': Date.now().toString()
+  });
+
+    this.reviewService.sendReview(this.productId, rate, text );
   }
 
   ngOnInit() {
